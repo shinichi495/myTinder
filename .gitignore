@@ -88,3 +88,5 @@ lint/tmp/
 .idea/compiler.xml
 .idea/jarRepositories.xml
 .idea/misc.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
