@@ -7,6 +7,7 @@ import com.namph.mytinder.data.repository.UserRepositoryImpl
 import com.namph.mytinder.data.service.UserService
 import com.namph.mytinder.domain.repository.UserRepository
 import com.namph.mytinder.domain.usecase.GetUserUseCase
+import com.namph.mytinder.fragment.UserDetailViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 
 val repositoryModules = module {
@@ -24,9 +25,9 @@ val networkModule = module {
 }
 
 val viewModels = module {
-//    viewModel {
-//
-//    }
+    viewModel {
+        UserDetailViewModel(get(named(GET_NEWS_USECASE)))
+    }
 }
 private const val API = "Api"
 private const val OKHTTP_INSTANCE = "OkHttp"

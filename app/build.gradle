@@ -57,6 +57,8 @@ dependencies {
     implementation lifecycleExtensions
     implementation glide
     implementation paging
+    implementation cardStackView
+    implementation roundImgineView
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

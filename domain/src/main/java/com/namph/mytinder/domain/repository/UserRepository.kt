@@ -5,5 +5,5 @@ import com.namph.mytinder.domain.usecase.base.Error
 import com.namph.mytinder.domain.usecase.base.Result
 
 interface UserRepository {
-    suspend fun getUserInfor () : Result<User,Error>
+    suspend fun getUserInfor () : Result<List<User>,Error>
 }

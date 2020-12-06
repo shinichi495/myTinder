@@ -8,13 +8,13 @@ import com.namph.mytinder.domain.usecase.base.Result
 import java.lang.Exception
 
 class UserRepositoryImpl(val userService: UserService) : UserRepository {
-    override suspend fun getUserInfor(): Result<User, Error> {
+    override suspend fun getUserInfor(): Result<List<User>, Error> {
         try {
             val response = userService.getUser()
             if (response.isSuccessful && response.body() != null) {
-                return Result.Success(response.body()!!.let {
-                    return@let User(
-                        it.user.ssn,
+                return Result.Success(response.body()!!.results.map {
+                    return@map User(
+                        it.user.SSN,
                         it.user.gender,
 
                         it.user.name.title,
