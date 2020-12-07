@@ -7,7 +7,7 @@ import com.namph.mytinder.data.repository.UserRepositoryImpl
 import com.namph.mytinder.data.service.UserService
 import com.namph.mytinder.domain.repository.UserRepository
 import com.namph.mytinder.domain.usecase.GetUserUseCase
-import com.namph.mytinder.fragment.UserDetailViewModel
+import com.namph.mytinder.presenter.feature.user.UserDetailViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 
 val repositoryModules = module {

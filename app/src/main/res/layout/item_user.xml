@@ -1,76 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!-- https://qiita.com/ntsk/items/dac92596742e18470a55 -->
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:foreground="?attr/selectableItemBackground"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="false"
-    app:cardCornerRadius="8dp"
-    app:cardBackgroundColor="@android:color/white">
+    <data>
+        <variable
+            name="item"
+            type="com.namph.mytinder.domain.model.User" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="128dp"
-            android:background="@drawable/gradation_black">
+        android:layout_height="wrap_content">
 
-        </LinearLayout>
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/item_image"
-                android:layout_width="156dp"
-                android:layout_height="156dp"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="16dp"
-                android:scaleType="fitCenter"
-                app:riv_border_color="@color/black"
-                app:riv_border_width="1dp"
-                app:riv_corner_radius="38dp"
-                app:riv_oval="true" />
-            <TextView
-                android:id="@+id/value1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:textColor="@color/teal_100"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textSize="26sp"/>
+            android:background="?attr/selectableItemBackground"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@android:color/white">
 
-            <TextView
-                android:id="@+id/value2"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:background="@drawable/gradation_black" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="32dp"
-                android:textSize="20sp"/>
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@color/white"
-                app:itemBackground="@android:color/white"
-                android:foreground="?attr/selectableItemBackground"
-                app:itemTextColor="@android:color/white"
-                app:menu="@menu/bottom_menu" />
-        </LinearLayout>
+                android:orientation="vertical">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/item_image"
+                    android:layout_width="156dp"
+                    android:layout_height="156dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitCenter"
+                    app:riv_border_color="@color/black"
+                    app:riv_border_width="1dp"
+                    app:riv_corner_radius="38dp"
+                    app:riv_oval="true" />
+
+                <FrameLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"/>
+
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/white"
+                    app:itemBackground="@android:color/white"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:itemTextColor="@android:color/white"
+                    app:menu="@menu/bottom_menu" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
 
     </FrameLayout>
-
-
-
-
-</androidx.cardview.widget.CardView>
+</layout>

@@ -4,7 +4,7 @@
 
         <variable
             name="viewmodel"
-            type="com.namph.mytinder.fragment.UserDetailViewModel" />
+            type="com.namph.mytinder.presenter.feature.user.UserDetailViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -35,7 +35,7 @@
                 <com.yuyakaido.android.cardstackview.CardStackView
                     android:id="@+id/card_stack_view"
                     android:layout_width="match_parent"
-                    android:layout_height="380dp"
+                    android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:padding="12dp"></com.yuyakaido.android.cardstackview.CardStackView>
 

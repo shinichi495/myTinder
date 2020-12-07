@@ -1,21 +1,17 @@
 package com.namph.mytinder
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.animation.LinearInterpolator
-import android.widget.StackView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
+import com.namph.mytinder.adapter.CardStackAdapter
 import com.namph.mytinder.databinding.ActivityMainBinding
 import com.namph.mytinder.domain.model.User
-import com.namph.mytinder.fragment.UserDetailViewModel
+import com.namph.mytinder.presenter.feature.user.UserDetailViewModel
 import com.yuyakaido.android.cardstackview.*
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -34,7 +30,8 @@ class MainActivity : AppCompatActivity() , CardStackListener {
             viewmodel = vm
         }
         activityBinding.lifecycleOwner = this
-        adapter = CardStackAdapter(emptyList())
+        adapter = CardStackAdapter(context = this)
+        adapter.setItems(emptyList())
         initialize()
         getCard()
     }
@@ -89,11 +86,11 @@ class MainActivity : AppCompatActivity() , CardStackListener {
     }
 
     private fun paginate(users : List<User>) {
-        val old = adapter.getUser()
+        val old = adapter.getItems()
         val new = old.plus(users)
         val callback = UserDiffCallback(old, new)
         val result = DiffUtil.calculateDiff(callback)
-        adapter.setUser(new)
+        adapter.setItems(new)
         result.dispatchUpdatesTo(adapter)
     }
 }

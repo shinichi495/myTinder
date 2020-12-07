@@ -1,6 +1,5 @@
-package com.namph.mytinder.fragment
+package com.namph.mytinder.presenter.feature.user
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.namph.mytinder.base.BaseViewModel
 import com.namph.mytinder.domain.model.User
@@ -29,13 +28,10 @@ class UserDetailViewModel(private val getUserUseCase: GetUserUseCase) : BaseView
     val loading = _loading
 
     fun handleSuccess(data: Any) {
-        Log.d("namph", "success")
         _item.postValue((data as List<User>))
     }
     fun handleFail(err: Error) {
-        Log.d("namph", "error")
     }
     fun handleState(state: Result.State) {
-        Log.d("namph", "state :$state")
     }
 }

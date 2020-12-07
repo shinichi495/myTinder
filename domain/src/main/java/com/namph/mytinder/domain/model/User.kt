@@ -15,7 +15,15 @@ data class User(
     val phone : String,
     val cell : String,
     val picture : String
-)
+) {
+    fun getName () : String {
+        return "$firstName $lastName"
+    }
+
+    fun getAddress () : String {
+        return "$street $city $state"
+    }
+}
 
 data class Name(val title: String, val first: String, val last: String)
 data class Location(val street: String, val city: String, val state: String, val zip: String)
