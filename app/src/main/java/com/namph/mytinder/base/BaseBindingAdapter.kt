@@ -16,6 +16,7 @@ abstract class BaseBindingAdapter<B : ViewDataBinding, T>(
     lateinit var binding: B
     var inflater: LayoutInflater
     lateinit var data : List<T>
+    private var item : T? = null
     init {
         inflater = LayoutInflater.from(context)
     }
@@ -34,13 +35,17 @@ abstract class BaseBindingAdapter<B : ViewDataBinding, T>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder<B>, position: Int) {
-        val item: T = data.get(position)
-        holder.viewDataBinding.setVariable(BR.item, item)
+        holder.viewDataBinding.setVariable(BR.item, data.get(position))
         holder.viewDataBinding.executePendingBindings()
+        item = data.get(position)
     }
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun getCurrentItem () : T? {
+        return item
     }
 
     class ViewHolder<T : ViewDataBinding>(val viewDataBinding: T) :

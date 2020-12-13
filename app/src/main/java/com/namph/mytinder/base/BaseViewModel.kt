@@ -11,19 +11,22 @@ import kotlin.coroutines.CoroutineContext
 @ObsoleteCoroutinesApi
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
     private val job = Job()
-    protected abstract val receiveChannel : ReceiveChannel<Result<Any,Error>>
+    protected abstract var receiveChannel: ReceiveChannel<Result<Any, Error>>
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    abstract fun resolve(value : Result<Any,Error>)
+    abstract fun resolve(value: Result<Any, Error>)
 
     init {
         processStream()
     }
-    private fun processStream () {
-        launch { receiveChannel.consumeEach {
-            resolve(it)
-        } }
+
+    private fun processStream() {
+        launch {
+            receiveChannel.consumeEach {
+                resolve(it)
+            }
+        }
     }
 
     override fun onCleared() {

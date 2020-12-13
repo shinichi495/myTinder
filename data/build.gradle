@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+
 }
 apply from: "../dependencies.gradle"
 
@@ -44,6 +46,15 @@ dependencies {
     implementation loggingInterceptor
     implementation coroutinesCore
     implementation coroutinesAndroid
+
+    implementation room_runtime
+    kapt room_kapt
+    implementation room_ktx
+    implementation room_testing
+    implementation paging_runtime
+    implementation paging_rx_Java
+
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'

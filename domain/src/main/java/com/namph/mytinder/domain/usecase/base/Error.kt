@@ -5,4 +5,5 @@ sealed class Error {
     object GenericError : Error()
     object ResponseError : Error()
     object PersistenceError : Error()
+    object LocalDataError : Error()
 }

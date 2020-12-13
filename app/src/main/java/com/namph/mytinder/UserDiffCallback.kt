@@ -2,10 +2,11 @@ package com.namph.mytinder
 
 import androidx.recyclerview.widget.DiffUtil
 import com.namph.mytinder.domain.model.User
+import com.namph.mytinder.model.UserItem
 
 class UserDiffCallback (
-    private val old: List<User>,
-    private val new: List<User>
+    private val old: List<UserItem>,
+    private val new: List<UserItem>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {

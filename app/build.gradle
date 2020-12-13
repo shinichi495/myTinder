@@ -10,6 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.namph.mytinder"
         minSdkVersion 16
         targetSdkVersion 30
@@ -47,6 +48,7 @@ dependencies {
     implementation koinAndroid
     implementation koinAndroidScope
     implementation koinAndroidViewModel
+
     implementation coroutinesCore
     implementation coroutinesAndroid
     implementation navigationFragment
@@ -60,6 +62,11 @@ dependencies {
     implementation paging
     implementation cardStackView
     implementation roundImgineView
+
+    implementation room_runtime
+    kapt room_kapt
+    implementation room_common
+    implementation multidex
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

@@ -1,20 +1,17 @@
 package com.namph.mytinder
 
-import android.app.Application
-import com.namph.mytinder.di.networkModule
-import com.namph.mytinder.di.repositoryModules
-import com.namph.mytinder.di.usecaseModules
-import com.namph.mytinder.di.viewModels
+import androidx.multidex.MultiDexApplication
+import com.namph.mytinder.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MyTinderApplication : Application() {
+class MyTinderApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@MyTinderApplication)
             modules(
-                viewModels + repositoryModules + usecaseModules + networkModule
+                viewModels + repositoryModules + databaseModule + dataSourceModule  + usecaseModules + networkModule
             )
         }
         instance = this

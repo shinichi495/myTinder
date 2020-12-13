@@ -35,7 +35,7 @@ class PhoneFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance (value : String) : PhoneFragment {
+        fun newInstance (value : String?) : PhoneFragment {
             val fragment = PhoneFragment()
             val args = Bundle()
             args.putString("phone", value)
