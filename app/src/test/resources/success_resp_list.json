@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "user": {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "steve",
+          "last": "vargas"
+        },
+        "location": {
+          "street": "6611 rolling green rd",
+          "city": "sioux falls",
+          "state": "wisconsin",
+          "zip": "92421"
+        },
+        "email": "steve.vargas82@example.com",
+        "username": "blackbear738",
+        "password": "lost",
+        "salt": "JfM6wdh4",
+        "md5": "cf3957d6c7770a805ec679d702bb21fe",
+        "sha1": "2edcd52f119f2f596ddbf75b91a9df6ecd791a3e",
+        "sha256": "48dc0a2538ccb05b0b94e0a59ffad116249b82646df074eb95f40ba40a583611",
+        "registered": "1417328329",
+        "dob": "425494421",
+        "phone": "(984)-752-1222",
+        "cell": "(898)-765-1185",
+        "SSN": "111-40-7946",
+        "picture": "http://api.randomuser.me/portraits/men/20.jpg"
+      },
+      "seed": "a68f0138d9b6e9a7",
+      "version": "0.4"
+    }
+  ]
+}

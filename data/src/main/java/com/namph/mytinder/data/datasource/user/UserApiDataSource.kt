@@ -9,6 +9,6 @@ suspend fun getUser (
 ) {
     apiSource.getUser()
 }
-interface UserApiDataSource {
+interface UserApiDataSource  {
     suspend fun getUser() : Result<List<User>,Error>
 }

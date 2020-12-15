@@ -28,6 +28,9 @@ class UserDetailViewModel(
     private val _item = MutableLiveData<List<UserItem>>().apply { value = null }
     val item = _item
 
+    private val _err = MutableLiveData<Boolean>().apply { value = false }
+    val err = _err
+
     fun requestUserFromServer() {
         getUserUseCase(GetUserUseCase.GET_USER_SERVER)
     }
@@ -50,11 +53,14 @@ class UserDetailViewModel(
                 it.map()
             }
             _item.postValue(userItem)
+            _err.postValue(false)
+        } else {
+            _err.postValue(true)
         }
     }
 
     fun handleFail(err: Error) {
-        Log.d("Namph", err.toString())
+        _err.postValue(true)
     }
 
     fun handleState(state: Result.State) {

@@ -12,8 +12,7 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
     private val job = Job()
     protected abstract var receiveChannel: ReceiveChannel<Result<Any, Error>>
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
+    override var coroutineContext: CoroutineContext = job + Dispatchers.Main
 
     abstract fun resolve(value: Result<Any, Error>)
 

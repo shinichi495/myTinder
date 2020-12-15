@@ -76,7 +76,21 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //test
+    implementation retrofit_test
+    androidTestImplementation espresso_androidx
+    androidTestImplementation junit_androidx
+    androidTestImplementation test_rule_androidx
+    androidTestImplementation core_test_androidx
+    androidTestImplementation mock_web_androidx
+    androidTestImplementation koin_test_androidx
+
+
+    testImplementation core_test
+    testImplementation mock_server_test
+    testImplementation koin_test
+    testImplementation io_mock_test
+    testImplementation juni_test
+
 }

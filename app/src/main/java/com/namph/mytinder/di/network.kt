@@ -11,8 +11,8 @@ fun createOkHttpClient(): OkHttpClient {
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
     return OkHttpClient
         .Builder()
-        .connectTimeout(60L, TimeUnit.SECONDS)
-        .readTimeout(60L, TimeUnit.SECONDS)
+        .connectTimeout(5L, TimeUnit.SECONDS)
+        .readTimeout(5L, TimeUnit.SECONDS)
         .addInterceptor(httpLoggingInterceptor).build()
 }
 

@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -49,12 +50,17 @@ class MainActivity : AppCompatActivity(), CardStackListener {
 
     override fun onCardSwiped(direction: Direction?) {
         if (!checkNetwork()) {
-            if (selectIndex == offlineCard.size - 1) {
+            if (!this::offlineCard.isInitialized) {
+                getCard()
                 selectIndex = 0
-                reload(offlineCard[selectIndex].toList())
+                return
+            }
+            if (selectIndex == offlineCard!!.size - 1) {
+                selectIndex = 0
+                offlineCard?.get(selectIndex)?.toList()?.let { reload(it) }
             } else {
                 selectIndex++
-                loadCard(offlineCard[selectIndex].toList())
+                offlineCard?.get(selectIndex)?.toList()?.let { loadCard(it) }
             }
             return
         } else if (direction == Direction.Right) {
@@ -64,18 +70,13 @@ class MainActivity : AppCompatActivity(), CardStackListener {
 
     }
 
-    override fun onCardRewound() {
-    }
+    override fun onCardRewound() {}
 
-    override fun onCardCanceled() {
-    }
+    override fun onCardCanceled() {}
 
-    override fun onCardAppeared(view: View?, position: Int) {
-        Log.d("NamPH16", position.toString())
-    }
+    override fun onCardAppeared(view: View?, position: Int) {}
 
-    override fun onCardDisappeared(view: View?, position: Int) {
-    }
+    override fun onCardDisappeared(view: View?, position: Int) {}
 
     private fun getCard() {
         if (checkNetwork()) {
@@ -124,10 +125,17 @@ class MainActivity : AppCompatActivity(), CardStackListener {
             if (it != null) {
                 if (!checkNetwork()) {
                     offlineCard = ArrayList(it)
-                    loadCard(offlineCard[selectIndex].toList())
+                    loadCard(offlineCard!![selectIndex].toList())
                 } else {
                     loadCard(users = it)
                 }
+            }
+        })
+
+        vm.err.observe(this, Observer {
+            if (it == true) {
+                val toast = Toast.makeText(this,"Error please restart app", Toast.LENGTH_LONG)
+                toast.show()
             }
         })
     }

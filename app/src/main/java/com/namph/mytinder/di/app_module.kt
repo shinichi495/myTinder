@@ -48,6 +48,7 @@ val networkModule = module {
     single(named(API)) { createService<UserService>(get(named(OKHTTP_INSTANCE)), BASE_URL) }
 }
 
+
 val databaseModule = module {
     fun provideDB(application: Application) = Room.databaseBuilder(application,MyTiderDb::class.java,"MyTinderDb").build()
     fun provideUserDao(db : MyTiderDb) = db.userDao()

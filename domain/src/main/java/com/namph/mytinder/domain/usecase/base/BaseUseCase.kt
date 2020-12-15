@@ -9,12 +9,11 @@ typealias SimpleResult = Result<Any, Error>
 abstract class BaseUseCase<in Params> : CoroutineScope {
     private val parentJob = SupervisorJob()
     private val mainDispathcer = Dispatchers.Main
-    private val backgroundDispatcher = Dispatchers.Default
+    var backgroundDispatcher = Dispatchers.IO
     protected val resultChannel = Channel<SimpleResult>()
 
     val receiveChannel : ReceiveChannel<SimpleResult> = resultChannel
-    override val coroutineContext: CoroutineContext
-        get() = parentJob + mainDispathcer
+    override var coroutineContext: CoroutineContext = parentJob + mainDispathcer
 
     protected abstract suspend fun run (params: Params)
 
